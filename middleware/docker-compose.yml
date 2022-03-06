@@ -1,0 +1,15 @@
+postgresql:
+  image: postgres:13.4
+  container_name: postgresql
+  ports:
+    - 5432:5432
+  volumes:
+    - ./postgres/init:/docker-entrypoint-initdb.d
+  environment:
+    POSTGRES_USER: sales_automation_user
+    POSTGRES_PASSWORD: weak-passw0rd
+    PGPASSWORD: weak-passw0rd
+    POSTGRES_DB: sales_automation
+    TZ: "Asia/Tokyo"
+  hostname: postgres
+  restart: always
