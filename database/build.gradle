@@ -1,0 +1,20 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.flywaydb:flyway-gradle-plugin:8.5.2'
+        classpath "org.postgresql:postgresql:42.2.14"
+    }
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "8.5.2"
+}
+
+flyway {
+    driver = 'org.postgresql.Driver'
+    url = 'jdbc:postgresql://localhost:5432/sales_automation'
+    user = 'sales_automation_user'
+    password = 'weak-passw0rd'
+}

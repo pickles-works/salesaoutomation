@@ -5,7 +5,6 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'sample'
-include 'flyway'
+rootProject.name = 'salesautomation'
+include 'database'
 include 'api'
-
