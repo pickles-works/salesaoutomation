@@ -17,4 +17,5 @@ flyway {
     url = 'jdbc:postgresql://localhost:5432/sales_automation'
     user = 'sales_automation_user'
     password = 'weak-passw0rd'
+    schemas = ['accounts']
 }
