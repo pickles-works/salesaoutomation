@@ -1,16 +1,18 @@
 package jp.co.pickles.salesautomation.domain.account;
 
 public class Account {
-    private AccountID accountID;
-    private LoginID loginID;
-    private Locked locked;
-    private Role role;
+    private final AccountID accountID;
+    private final LoginID loginID;
+    private final Locked locked;
+    private final Role role;
+    private final AccountEmail email;
 
-    public Account(AccountID accountID, LoginID loginID, Locked locked, Role role) {
+    public Account(AccountID accountID, LoginID loginID, Locked locked, Role role, AccountEmail email) {
         this.accountID = accountID;
         this.loginID = loginID;
         this.locked = locked;
         this.role = role;
+        this.email = email;
     }
 
     public Account() {
@@ -18,6 +20,7 @@ public class Account {
         this.loginID = new LoginID();
         this.locked = new Locked();
         this.role = new Role();
+        this.email = new AccountEmail();
     }
 
     public AccountID getAccountID() {
@@ -42,5 +45,9 @@ public class Account {
 
     public boolean hasRole() {
         return !this.role.isEmpty();
+    }
+
+    public AccountEmail getEmail() {
+        return this.email;
     }
 }

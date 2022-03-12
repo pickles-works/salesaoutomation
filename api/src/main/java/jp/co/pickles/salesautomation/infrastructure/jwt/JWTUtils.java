@@ -15,13 +15,13 @@ public class JWTUtils {
     private static final String ISSUER = SalesAutomationApplication.class.getName();
     private static final byte[] SECRET = ISSUER.getBytes();
 
-    private Long accessTokenExpirationTime;
+    private Long accessTokenExpirationTime = 60L * 60L * 1000L;
 
-    public JWTUtils(
-            @Value("salesautomation.auth.accesstoken.expiration.time")
-                    Long accessTokenExpirationTime) {
-        this.accessTokenExpirationTime = accessTokenExpirationTime;
-    }
+//    public JWTUtils(
+//            @Value("${salesautomation.auth.accesstoken.expiration.time}")
+//                    String accessTokenExpirationTime) {
+//        this.accessTokenExpirationTime = Long.parseLong(accessTokenExpirationTime);
+//    }
 
     public AccessToken encode(AccountID accountID) {
         return new AccessToken(

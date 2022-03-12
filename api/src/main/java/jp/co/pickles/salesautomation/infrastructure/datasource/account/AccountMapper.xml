@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.UserMapper">
+    <resultMap id="AccountWithPasswordMap" type="jp.co.pickles.salesautomation.domain.account.AccountWithPassword">
+        <id property="account_id.value" column="account_id" />
+        <result property="login_id.value" column="login_id"/>
+        <result property="email.value" column="email"/>
+        <result property="locked.value" column="locked"/>
+        <result property="role.value" column="role"/>
+        <result property="password.value" column="password"/>
+    </resultMap>
+
+    <sql id="select">
+        select
+            accounts.id as account_id,
+            account_login_id_revision_values.login_id as login_id,
+            account_revision_values.email as email,
+            case
+                when locked_accounts.id is not null then 'LOCKED'
+                else 'NOT_LOCKED'
+                end as locked,
+            account_revision_values.login_id as login_id,
+            account_password_revision_values.password as password
+    </sql>
+    <sql id="from">
+        from
+            accounts as accounts
+            inner join latest_accounts as latest_accounts on accounts.id = latest_accounts.id
+            inner join account_revision_values as account_revision_values on latest_accounts.id = account_revision_values.id and  latest_accounts.revision = account_revision_values.revision
+            left join locked_accounts as locked_accounts on locked_accounts.id = accounts.id
+    </sql>
+
+    <select id="findBy" resultMap="AccountWithPasswordMap">
+    </select>
+</mapper>

@@ -17,9 +17,17 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'io.jsonwebtoken:jjwt:0.9.0'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.3'
+
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
 }
 
 tasks.named('test') {

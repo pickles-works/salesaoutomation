@@ -1,0 +1,1 @@
+package jp.co.pickles.salesautomation.infrastructure.datasource;

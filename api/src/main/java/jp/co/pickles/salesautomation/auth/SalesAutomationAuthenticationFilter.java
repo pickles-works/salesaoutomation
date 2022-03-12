@@ -1,6 +1,7 @@
 package jp.co.pickles.salesautomation.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,11 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
 public class SalesAutomationAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    public SalesAutomationAuthenticationFilter() {
-    }
-
     public SalesAutomationAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }

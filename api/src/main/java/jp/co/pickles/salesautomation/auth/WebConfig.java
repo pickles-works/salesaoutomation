@@ -36,7 +36,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().logout()
                 .and().csrf().disable()
-                .addFilter(this.authorizationFilter)
+                .addFilterAfter(this.authorizationFilter, SalesAutomationAuthenticationFilter.class)
                 .addFilterBefore(this.getAuthenticationFilter(), SalesAutomationAuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }

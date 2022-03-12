@@ -4,14 +4,15 @@ import jp.co.pickles.salesautomation.domain.account.password.HashingPassword;
 import jp.co.pickles.salesautomation.domain.account.password.PlainTextPassword;
 
 public class AccountWithPassword extends Account {
-    private HashingPassword password;
+    private final HashingPassword password;
 
-    public AccountWithPassword(AccountID accountID, LoginID loginID, Locked locked, Role role, HashingPassword password) {
-        super(accountID, loginID, locked, role);
+    public AccountWithPassword(AccountID accountID, LoginID loginID, Locked locked, Role role, AccountEmail email, HashingPassword password) {
+        super(accountID, loginID, locked, role, email);
         this.password = password;
     }
 
     public AccountWithPassword() {
+        super();
         this.password = new HashingPassword();
     }
 
@@ -24,7 +25,8 @@ public class AccountWithPassword extends Account {
                 this.getAccountID(),
                 this.getLoginID(),
                 this.getLocked(),
-                this.getRole()
+                this.getRole(),
+                this.getEmail()
         );
     }
 }

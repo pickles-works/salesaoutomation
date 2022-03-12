@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sales_automation
+    username: sales_automation_user
+    password: weak-passw0rd
+    driver-class-name: 'org.postgresql.Driver'
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+alesautomation:
+  auth:
+    accesstoken:
+      expiration:
+        time: 3600000
