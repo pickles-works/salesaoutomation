@@ -1,19 +1,19 @@
-package jp.co.pickles.salesautomation.domain.user;
+package jp.co.pickles.salesautomation.domain.employee;
 
 import jp.co.pickles.salesautomation.domain.base.StringType;
 
 import java.util.regex.Pattern;
 
-public class UserName extends StringType<UserName> {
-    public UserName(String value) {
+public class EmployeeName extends StringType<EmployeeName> {
+    public EmployeeName(String value) {
         super(value);
     }
 
-    public UserName() {
+    public EmployeeName() {
     }
 
     @Override
-    public boolean same(UserName that) {
+    public boolean same(EmployeeName that) {
         return this.equals(that);
     }
 

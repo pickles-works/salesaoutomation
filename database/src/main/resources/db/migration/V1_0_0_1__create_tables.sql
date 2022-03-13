@@ -55,3 +55,56 @@ create table accounts.deleted_accounts(
     primary key (id),
     foreign key (id) references accounts.accounts (id)
 );
+
+-- 従業員
+create schema if not exists employees;
+
+create table employees.employees(
+    id uuid not null,
+    created_at timestamp not null default current_timestamp,
+    primary key (id),
+    foreign key (id) references accounts.accounts (id)
+);
+
+create table employees.employee_revisions(
+    id uuid not null,
+    revision bigint not null,
+    created_at timestamp not null default current_timestamp,
+    primary key (id, revision),
+    foreign key (id) references employees.employees (id)
+);
+
+create table employees.latest_employees(
+    id uuid not null,
+    revision bigint not null,
+    created_at timestamp not null default current_timestamp,
+    primary key (id),
+    foreign key (id) references employees.employees (id),
+    foreign key (id, revision) references employees.employee_revisions (id, revision)
+);
+
+create table employees.employee_revision_values(
+    id uuid not null,
+    revision bigint not null,
+    account_revision bigint not null,
+    created_at timestamp not null default current_timestamp,
+    primary key (id, revision),
+    foreign key (id) references employees.employees (id),
+    foreign key (id, revision) references employees.employee_revisions (id, revision),
+    foreign key (id, account_revision) references accounts.account_revisions (id, revision)
+);
+
+create table employees.employee_revision_counts (
+    id uuid not null,
+    revision bigint not null,
+    created_at timestamp not null default current_timestamp,
+    primary key (id),
+    foreign key (id) references employees.employees (id)
+);
+
+create table employees.deleted_employees(
+    id uuid not null,
+    created_at timestamp not null default current_timestamp,
+    primary key (id),
+    foreign key (id) references employees.employees (id)
+);

@@ -1,21 +1,21 @@
-package jp.co.pickles.salesautomation.domain.user;
+package jp.co.pickles.salesautomation.domain.employee;
 
 import jp.co.pickles.salesautomation.domain.base.StringType;
 
 import java.util.regex.Pattern;
 
-public class UserEmail extends StringType<UserEmail> {
+public class EmployeeEmail extends StringType<EmployeeEmail> {
     private static final Pattern PATTERN = Pattern.compile("^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\\.)+[a-zA-Z]{2,}$");
 
-    public UserEmail(String value) {
+    public EmployeeEmail(String value) {
         super(value);
     }
 
-    public UserEmail() {
+    public EmployeeEmail() {
     }
 
     @Override
-    public boolean same(UserEmail that) {
+    public boolean same(EmployeeEmail that) {
         return this.equals(that);
     }
 

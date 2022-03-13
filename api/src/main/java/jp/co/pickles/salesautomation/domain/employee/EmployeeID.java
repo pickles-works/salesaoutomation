@@ -1,19 +1,19 @@
-package jp.co.pickles.salesautomation.domain.user;
+package jp.co.pickles.salesautomation.domain.employee;
 
 import jp.co.pickles.salesautomation.domain.base.UUIDType;
 
 import java.util.UUID;
 
-public class UserID extends UUIDType<UserID> {
-    public UserID(String value) {
+public class EmployeeID extends UUIDType<EmployeeID> {
+    public EmployeeID(String value) {
         super(value);
     }
 
-    public UserID(UUID value) {
+    public EmployeeID(UUID value) {
         super(value);
     }
 
-    public UserID() {
+    public EmployeeID() {
     }
 
     @Override
@@ -22,7 +22,7 @@ public class UserID extends UUIDType<UserID> {
     }
 
     @Override
-    public boolean same(UserID that) {
+    public boolean same(EmployeeID that) {
         return this.equals(that);
     }
 
